@@ -2,5 +2,7 @@
 This is a console version of popular 2048 game.  
 
 
-#To run:
+
+
+To run:
 open --> ./bin/Debug/2048c++.exe
