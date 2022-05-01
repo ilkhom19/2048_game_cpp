@@ -2,8 +2,12 @@
 #include<conio.h>
 using namespace std;
 
+int steps_made =0;
+
 void upmove(int a[4][4])
 {
+    steps_made++;
+
 	int i,j,li,ri;
 	for(j=0;j<4;j++)
 	{
@@ -41,6 +45,8 @@ void upmove(int a[4][4])
 
 void downmove(int a[4][4])
 {
+    steps_made++;
+
 	int i,j,li,ri;
 	for(j=0;j<4;j++)
 	{
@@ -78,6 +84,8 @@ void downmove(int a[4][4])
 
 void leftmove(int a[4][4])
 {
+    steps_made++;
+
 	int i,j,li,ri;
 	for(i=0;i<4;i++)
 	{
@@ -115,6 +123,8 @@ void leftmove(int a[4][4])
 
 void rightmove(int a[4][4])
 {
+    steps_made++;
+
 	int i,j,li,ri;
 	for(i=0;i<4;i++)
 	{
@@ -224,7 +234,11 @@ int checkover(int a[4][4])
 
 int main()
 {
-	cout<<"\n\n\n\n\t\t\t2048 GAME\n\n\n\t\tPress any key to continue";
+	cout<<"\n\n\n\n\t\t\t2048 GAME\n\n\n\t\tEnter your name: ";
+	string name;
+	cin >> name;
+	name[0] = toupper(name[0]);
+	cout<<"\n\n\n\n\t\tShall we start " << name << " ?\n\n\n\t\tPress any key to launch the board";
 	getch();
 	system("cls");
 	int i1,i2,i3,i4,i,j;
@@ -262,7 +276,15 @@ int main()
 
 		if(!checkover(a))
 		{
-			cout<<"\n\n\t\t\tGAME OVER!!\n\n\n";
+		    int max_point = 0;
+
+		    for(i=0;i<4;i++){
+                for(j=0;j<4;j++){
+                    max_point = max(max_point, a[i][j]);
+                }
+		    }
+
+			cout<<"\n\n\t\tPoor "<< name << " is now STUCK and reached " << max_point << " by making "<< steps_made <<  " steps\n\n\n";
 			getch();
 			break;
 		}
